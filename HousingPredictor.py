@@ -53,15 +53,15 @@ best_gp = grid_search.best_estimator_
 # Predict on the test set and get standard deviation
 y_pred, sigma = best_gp.predict(X_test, return_std=True)
 
-# Plot the results
+# Plotting the results
 plt.figure(figsize=(10, 6))
 plt.scatter(y_test, y_pred, color ='blue', label='Predicted vs Actual')
 
-# Add a reference line where y = x in order to see perfect predictions
+# Finding min and max values to scale the graph 
 min_value = min(min(y_test), min(y_pred))
 max_value = max(max(y_test), max(y_pred))
 
-# Black dashed line for y = x
+# Black dashed line for y = x (to easily see perfect predictions)
 plt.plot([min_value, max_value], [min_value, max_value], color = "black", linestyle = "--", label="y = x")  
 
 # Format axis labels and limits
@@ -72,6 +72,6 @@ plt.ylim(min_value, max_value)
 plt.xlabel('Actual Prices')
 plt.ylabel('Predicted Prices')
 plt.title('Predicted vs Actual Prices')
-plt.legend()
+plt.legend(loc = 'upper right')
 plt.show()
 
